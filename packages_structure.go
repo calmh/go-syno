@@ -88,7 +88,10 @@ func (p Packages) Len() int {
 	return len(p)
 }
 func (p Packages) Less(i, j int) bool {
-	return p[i].Name < p[j].Name
+	if p[i].Name != p[j].Name {
+		return p[i].Name < p[j].Name
+	}
+	return p[i].Version > p[j].Version // reverse sort
 }
 func (p Packages) Swap(i, j int) {
 	p[i], p[j] = p[j], p[i]

@@ -19,7 +19,9 @@ var pX8664,
 	pEvansport,
 	pMulti,
 	p1,
-	p2 *syno.Package
+	p2,
+	pV1,
+	pV2 *syno.Package
 
 func init() {
 	p1 = &syno.Package{
@@ -72,6 +74,18 @@ func init() {
 		Name: "evansport-package",
 		Arch: "evansport",
 		Beta: true,
+	}
+	pV1 = &syno.Package{
+		Name:        "test-package",
+		DisplayName: "Test Package",
+		Arch:        "x86_64 apollolake broadwell",
+		Version:     "1.1",
+	}
+	pV2 = &syno.Package{
+		Name:        "test-package",
+		DisplayName: "Test Package",
+		Arch:        "x86_64 apollolake broadwell",
+		Version:     "1.2",
 	}
 }
 
@@ -189,6 +203,15 @@ func TestSortPackages(t *testing.T) {
 
 	if name := pp[0].Name; name != "package1" {
 		t.Errorf("Expected first package to be package1 but got %s", name)
+	}
+}
+
+func TestSortPackagesVersion(t *testing.T) {
+	pp := syno.Packages{pV1, pV2}
+	sort.Sort(pp)
+
+	if v := pp[0].Version; v != "1.2" {
+		t.Errorf("Expected higher version package to come first")
 	}
 }
 
