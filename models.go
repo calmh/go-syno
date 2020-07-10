@@ -31,7 +31,7 @@ var Families map[string][]string
 func init() {
 	// https://github.com/SynologyOpenSource/pkgscripts-ng/blob/master/include/pkg_util.sh#L107
 	Families = make(map[string][]string)
-	Families["x86_64"] = []string{"x86", "bromolow", "cedarview", "avoton", "braswell", "broadwell", "dockerx64", "kvmx64", "grantley", "denverton", "apollolake"}
+	Families["x86_64"] = []string{"x86", "bromolow", "cedarview", "avoton", "braswell", "broadwell", "dockerx64", "kvmx64", "grantley", "denverton", "apollolake", "geminilake"}
 	Families["i686"] = []string{"evansport"}
 	Families["armv5"] = []string{"88f6281", "88f6282", "88f5281"}
 	Families["armv7"] = []string{"alpine", "alpine4k", "ipq806x", "northstarplus"}
